@@ -1,26 +1,29 @@
 # Telegram Notifier — Public SDK source and CLI distributions
 
-This is the **public distribution repository** for the AgentForge Labs Telegram Notifier client SDKs and standalone CLI. The hosted Telegram relay backend, private infrastructure, and commercial monorepo are **not published** here.
+This repository hosts reviewed public source for Telegram Notifier clients and verified public CLI releases. The hosted relay service, proprietary backend, infrastructure and credentials remain private.
 
 ## Ruby SDK (AGPL-3.0-only)
 
-Install version 0.2.0 from RubyGems:
+RubyGems: https://rubygems.org/gems/agentforge-telegram-notifier
+
+Install the verified v0.2.0 package:
 
 ```sh
 gem install agentforge-telegram-notifier -v 0.2.0
 ```
 
-- [Public RubyGems package](https://rubygems.org/gems/agentforge-telegram-notifier)
-- [Corresponding Ruby 0.2.0 source](sdk/ruby/)
-- [Ruby usage and development guide](sdk/ruby/README.md)
-- [AGPL-3.0 license](LICENSE)
+- **Immutable v0.2.0 source**: [Ruby SDK release source](https://github.com/AgentForge-Labs/telegram-notifier-distributions/tree/telegram-notifier-ruby-v0.2.0/sdk/ruby)
+- **v0.2.1 source / corrected public links**: [current Ruby SDK](sdk/ruby/) (package publication is independently verified on RubyGems)
+- [Ruby SDK README](sdk/ruby/README.md) and [AGPL license](LICENSE)
 
-The immutable 0.2.0 gemspec contains historical metadata pointing to the upstream private monorepo. This public tree preserves the **exact same source version** that was published. Future releases will point package metadata here.
+The historical 0.2.0 gemspec linked to a private monorepo. The v0.2.1 source corrects this; the immutable 0.2.0 release artifact is unchanged.
 
-## Standalone CLI
+## Standalone Go CLI
 
-The reviewed, client-only [Go CLI source](cli/telegram-notifier/) is available here. Downloadable platform archives, SHA-256 checksums and release notes will appear on [GitHub Releases](https://github.com/AgentForge-Labs/telegram-notifier-distributions/releases) once built and verified. A public source tree alone is **not** a claim that CLI packages are available yet.
+[CLI source](cli/telegram-notifier/). Public binaries and checksums: [Telegram Notifier CLI v0.1.0](https://github.com/AgentForge-Labs/telegram-notifier-distributions/releases/tag/telegram-notifier-cli-v0.1.0).
 
-## Security and development
+Six release archives cover Linux, macOS and Windows on amd64 and arm64. Verify downloads using the included checksums.txt SHA-256 file and inspect provenance.json for build metadata; the metadata is not a signed attestation.
 
-Only whitelisted SDK and CLI source files were copied from the private upstream. There are no production service implementations, runtime credentials, deployment manifests, token files or server environment configuration here. Please report bugs using this repository's Issues page. Verify package publisher identity and checksums before installing.
+## Security
+
+The public source was exported from a fixed allowlist of SDK/CLI paths. It contains no private backend implementation, production secrets, tokens or infrastructure configuration. Report public client issues via this repository's Issues page. Package-manager submission and registry approvals are verified separately.

@@ -8,7 +8,7 @@
   "sourceDirectory": "cli/telegram-notifier",
   "tagPrefix": "telegram-notifier-cli-v",
   "defaultBaseUrl": "http://127.0.0.1:8818",
-  "repository": "AgentForge-Labs/telegram-notifier-public_commercial",
+  "repository": "AgentForge-Labs/telegram-notifier-distributions",
   "targets": [
     {
       "os": "linux",

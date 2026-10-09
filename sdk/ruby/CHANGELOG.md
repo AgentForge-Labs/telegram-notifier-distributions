@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+- Public Ruby SDK source and documentation are available in AgentForge-Labs/telegram-notifier-distributions.
+- RubyGems homepage, source, documentation and issue links now resolve anonymously without exposing the commercial backend.
+- No runtime API or authentication changes.
+
 ## 0.2.0
 
 - Migrated the Ruby package identity to `agentforge-telegram-notifier`.

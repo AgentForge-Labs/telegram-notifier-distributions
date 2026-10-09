@@ -29,7 +29,7 @@ class TelegramNotifierClientTest < Minitest::Test
   def test_default_origin_and_version
     client = Client.new(source: "agent-a")
     assert_equal "http://127.0.0.1:8818", client.origin
-    assert_equal "0.2.0", AgentForge::TelegramNotifier::VERSION
+    assert_equal "0.2.1", AgentForge::TelegramNotifier::VERSION
   end
 
   def test_source_and_origin_validation
@@ -69,7 +69,7 @@ class TelegramNotifierClientTest < Minitest::Test
     assert_equal "Bearer good-secret", first["Authorization"]
     assert_operator first["Idempotency-Key"].length, :>=, 8
     assert_equal first["Idempotency-Key"], second["Idempotency-Key"]
-    assert_equal "agentforge-telegram-notifier/0.2.0 ruby", first["User-Agent"]
+    assert_equal "agentforge-telegram-notifier/0.2.1 ruby", first["User-Agent"]
   end
 
   def test_structured_errors_and_redaction

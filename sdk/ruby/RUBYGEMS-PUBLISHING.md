@@ -1,35 +1,20 @@
 # RubyGems publishing
 
-Canonical gem: `agentforge-telegram-notifier`.
+Canonical RubyGems gem: agentforge-telegram-notifier.
 
-Source remains in the
-`AgentForge-Labs/telegram-notifier-public_commercial` monorepo under `sdk/ruby`.
-Do not create or sync a separate Ruby source repository.
+The reviewed sdk/ruby source originates in the private AgentForge-Labs/telegram-notifier-public_commercial monorepo and is exported only after an explicit allowlist review to the public distribution repository:
+https://github.com/AgentForge-Labs/telegram-notifier-distributions/tree/main/sdk/ruby
 
-## Release
+## Release process
 
-The `rubygems-release` workflow accepts an explicit stable `X.Y.Z` version or the
-`telegram-notifier-ruby-vX.Y.Z` tag.
+The rubygems-release.yml workflow accepts exact X.Y.Z or telegram-notifier-ruby-vX.Y.Z tags. Both gemspec and internal Ruby VERSION must match.
 
-Before publication it:
+1. Verify the canonical version and public/private artifact boundary.
+2. Run Ruby unit tests and public v1 API conformance.
+3. Build the gem with isolated pinned Ruby 3.3.12 on the Netcup long runner.
+4. Authenticate through the permanent RubyGems Trusted Publisher OIDC binding for the private upstream, rubygems-release.yml and environment rubygems.
+5. Publish to RubyGems and verify a fresh public registry install (PUBLIC_RUBYGEMS_INSTALL=PASS).
 
-1. verifies the gem version,
-2. runs Ruby unit tests and Telegram Notifier public-v1 conformance,
-3. builds the exact gem,
-4. verifies the thin distribution boundary,
-5. installs the built gem in an isolated Ruby container.
+The official RubyGems configure-rubygems-credentials action is pinned to immutable v2.1.0 commit dc5a8d8553e6ee01fc26761a49e99e733d17954a. Interactive account credentials remain in the encrypted MCP publisher vault, not the code or CI. If publication or public registry install cannot be verified, release fails closed. The CI runner never receives production Docker daemon permissions.
 
-Publication uses RubyGems GitHub OIDC Trusted Publishing via
-`rubygems/configure-rubygems-credentials@v2` in the protected `rubygems` environment.
-The account owner must configure the matching pending trusted publisher for
-`AgentForge-Labs/telegram-notifier-public_commercial` and
-`rubygems-release.yml`. The interactive account password stays in the
-encrypted MCP publisher vault, not in this repository or its CI inputs.
-If RubyGems cannot authorize the OIDC identity, publication fails closed.
-
-After a push, the workflow installs the exact public version from RubyGems and requires
-`PUBLIC_RUBYGEMS_INSTALL=PASS`.
-
-At migration time the canonical gem page returned 404, so this repository does not
-claim that public publication already happened. The former legacy gem identity is
-retired from this workflow and must not receive new releases.
+Export public source before publishing and keep a source tag for each immutable gem release. Do not expose the hosted backend or private monorepo.

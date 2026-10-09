@@ -1,11 +1,11 @@
 # agentforge-telegram-notifier for Ruby
 
-Official Ruby client for the **Telegram Notifier public v1 API**. The source lives in
-this monorepo under `sdk/ruby`; no separate Ruby repository is required.
+Official Ruby client for the **Telegram Notifier public v1 API**. The reviewed public source is available at
+https://github.com/AgentForge-Labs/telegram-notifier-distributions/tree/main/sdk/ruby; the upstream commercial monorepo remains private.
 
 ## Install
 
-After the RubyGems release is activated:
+Published on RubyGems.org:
 
 ```bash
 gem install agentforge-telegram-notifier

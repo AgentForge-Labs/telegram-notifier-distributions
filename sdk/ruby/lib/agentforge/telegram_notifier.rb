@@ -9,7 +9,7 @@ require "uri"
 
 module AgentForge
   module TelegramNotifier
-    VERSION = "0.2.0"
+    VERSION = "0.2.1"
     DEFAULT_ORIGIN = "http://127.0.0.1:8818"
     USER_AGENT = "agentforge-telegram-notifier/#{VERSION} ruby"
     RETRYABLE = [429, 502, 503, 504].freeze
