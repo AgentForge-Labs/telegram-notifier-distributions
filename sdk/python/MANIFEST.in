@@ -1,0 +1,3 @@
+include README.md
+include LICENSE
+recursive-include agentforge_telegram_notifier *.py py.typed
